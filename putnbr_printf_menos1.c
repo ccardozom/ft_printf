@@ -6,7 +6,7 @@ void    putnbr_printf_menos1(valores **bag)
     int len;
     int neg;
 
-    if ((number = putnbr_verificar_zero(bag)) == 0 && (*bag)->precision != -1)
+    if ((number = putnbr_check_zero(bag)) == 0 && (*bag)->precision != -1)
         return ;
     len = ft_nbrlenprec(number);
     neg = 0;

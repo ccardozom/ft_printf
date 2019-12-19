@@ -6,7 +6,7 @@
 /*   By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 09:57:11 by ccardozo          #+#    #+#             */
-/*   Updated: 2019/12/18 13:57:38 by ccardozo         ###   ########.fr       */
+/*   Updated: 2019/12/19 14:42:47 by ccardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ int		main(void)
 	i = 10;
 	j = 5;
 	suma = i + j;
-	ft_printf("La suma de %d + %d es igual a %d", i, j, suma);
+	ft_printf("La suma de \" %d + %d es igual a %d", i, j, suma);
 }

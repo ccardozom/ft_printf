@@ -16,5 +16,5 @@ void    putnbr_printf_zero(valores **bag)
         (*bag)->len += 1; 
     }
     putnbr_prec_len(bag, len);
-    ft_putnbrprintfprec(num, bag)
+    ft_putnbrprintfprec(num, bag);
 }
