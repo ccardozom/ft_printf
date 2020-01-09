@@ -6,7 +6,7 @@
 /*   By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 09:57:11 by ccardozo          #+#    #+#             */
-/*   Updated: 2019/12/19 14:42:47 by ccardozo         ###   ########.fr       */
+/*   Updated: 2020/01/09 15:20:07 by ccardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,36 @@
 int		ft_printf(const	char *format, ...)
 {
 	int			len;
-	valores		*bag;
+	t_valores		*bag;
 
 	bag = new_ini(format);
 	va_start(bag->ap, format);
 	len = 0;
 	if (bag->str[0] && bag->str[0] == '%' && !bag->str[1])
-		;
+		write(1, "Incomplete format specifier", 28);
 	else if (!ft_strchr(bag->str, '%'))
-		bag->len = bag->len + write(1, bag->str, ft_strlen(bag->str));
+		write(1, bag->str, ft_strlen(bag->str));
 	else
 		procesar_linea(&bag);
 	len = bag->len;
 	va_end(bag->ap);
-	return (0);
+	free(bag);
+	return (len);
 }
 
-int		main(void)
+int	main(void)
 {
 	int	i;
-	int	j;
-	int suma;
+	float j;
+	double m;
+	
+	
+	i = 25012;
+	j = 15.45114;
+	m = 15.541541;
 
-	i = 10;
-	j = 5;
-	suma = i + j;
-	ft_printf("La suma de \" %d + %d es igual a %d", i, j, suma);
+
+	ft_printf("%97i", 33);
+	printf("%7i", 33);
+	//printf("\n%X",j);
 }

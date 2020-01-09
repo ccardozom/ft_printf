@@ -1,6 +1,6 @@
 #include "printf.h"
 
-void    ft_putnbrprintf(int nb, valores **bag)
+void    ft_putnbrprintf(int nb, t_valores **bag)
 {
     unsigned int	i;
 

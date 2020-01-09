@@ -1,6 +1,6 @@
 #include "printf.h"
 
-void    putnbr_printf_zero(valores **bag)
+void    putnbr_printf_zero(t_valores **bag)
 {
     int     num;
     int     neg;

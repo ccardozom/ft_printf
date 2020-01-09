@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   putzeros.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/08 15:08:11 by ccardozo          #+#    #+#             */
+/*   Updated: 2020/01/08 15:08:35 by ccardozo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
-void    putzeros(int nzeros)
+void	putzeros(int nzeros)
 {
-    if (nzeros > 0)
-        while (nzeros)
-        {
-            ft_putchar('0');
-            nzeros--;
-        }
+	if (nzeros > 0)
+		while (nzeros)
+		{
+			ft_putchar('0');
+			nzeros--;
+		}
 }

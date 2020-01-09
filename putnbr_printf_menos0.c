@@ -1,6 +1,6 @@
 #include "printf.h"
 
-void    putnbr_printf_menos0(valores **bag)
+void    putnbr_printf_menos0(t_valores **bag)
 {
     int		diff;
 	int		number;

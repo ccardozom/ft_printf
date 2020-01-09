@@ -1,6 +1,6 @@
 #include "printf.h"
 
-void    putnbr_width_zeros(valores **bag, int len, int neg)
+void    putnbr_width_zeros(t_valores **bag, int len, int neg)
 {
     int diff;
 
