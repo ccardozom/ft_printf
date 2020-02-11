@@ -5,25 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 12:15:05 by ccardozo          #+#    #+#             */
-/*   Updated: 2019/12/18 10:25:01 by ccardozo         ###   ########.fr       */
+/*   Created: 2019/11/05 11:04:43 by pcuadrad          #+#    #+#             */
+/*   Updated: 2020/02/06 13:23:46 by ccardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char		*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	char	*p;
-	int		i;
+	char	*str_string;
 
-	p = (void *)s;
-	i = 0;
-	while (*p != c)
+	str_string = (char*)s;
+	if (c == '\0')
 	{
-		if (*p == '\0')
-			return (NULL);
-		p++;
+		while (*str_string)
+			str_string++;
+		return (str_string);
 	}
-	return (p);
+	while (*str_string)
+	{
+		if (*str_string == (char)c)
+			return (str_string);
+		str_string++;
+	}
+	return (NULL);
 }

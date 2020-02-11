@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 10:56:48 by ccardozo          #+#    #+#             */
-/*   Updated: 2020/01/09 08:55:02 by ccardozo         ###   ########.fr       */
+/*   Created: 2019/11/23 17:49:47 by pcuadrad          #+#    #+#             */
+/*   Updated: 2020/02/06 13:25:33 by ccardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static void		puthex_printf_1minus(t_valores **bag)
+static void		puthex_printf_1minus(t_printf **bag)
 {
 	unsigned int		number;
 	int					len;
@@ -25,7 +25,7 @@ static void		puthex_printf_1minus(t_valores **bag)
 	putnbr_width_prec(bag, len, 0);
 }
 
-static void		puthex_printf_0minus(t_valores **bag)
+static void		puthex_printf_0minus(t_printf **bag)
 {
 	int				len;
 	unsigned int	number;
@@ -38,12 +38,12 @@ static void		puthex_printf_0minus(t_valores **bag)
 	{
 		diff = (*bag)->width - len;
 		putspaces(diff);
-		(*bag)->len += diff;
+		(*bag)->size += diff;
 	}
 	printf_hex(number, bag);
 }
 
-static void		puthex_printf_zeros(t_valores **bag)
+static void		puthex_printf_zeros(t_printf **bag)
 {
 	unsigned int		number;
 	int					len;
@@ -57,7 +57,7 @@ static void		puthex_printf_zeros(t_valores **bag)
 	printf_hex(number, bag);
 }
 
-static void		puthex_printf_precision(t_valores **bag)
+static void		puthex_printf_precision(t_printf **bag)
 {
 	int				len;
 	unsigned int	number;
@@ -70,11 +70,11 @@ static void		puthex_printf_precision(t_valores **bag)
 	printf_hex(number, bag);
 }
 
-void			puthex_printf(t_valores **bag)
+void			puthex_printf(t_printf **bag)
 {
-	if ((*bag)->menos == 1)
+	if ((*bag)->minus == 1)
 		puthex_printf_1minus(bag);
-	else if ((*bag)->menos == 0)
+	else if ((*bag)->minus == 0)
 	{
 		if ((*bag)->zero == 1)
 			puthex_printf_zeros(bag);

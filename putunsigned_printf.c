@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 08:12:05 by ccardozo          #+#    #+#             */
-/*   Updated: 2020/01/09 09:51:26 by ccardozo         ###   ########.fr       */
+/*   Created: 2019/11/23 16:18:33 by pcuadrad          #+#    #+#             */
+/*   Updated: 2020/02/06 13:26:48 by ccardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static void		putunsigned_printf_1minus(t_valores **bag)
+static void		putunsigned_printf_1minus(t_printf **bag)
 {
 	unsigned int		number;
 	int					len;
@@ -25,7 +25,7 @@ static void		putunsigned_printf_1minus(t_valores **bag)
 	putnbr_width_prec(bag, len, 0);
 }
 
-static void		putunsigned_printf_0minus(t_valores **bag)
+static void		putunsigned_printf_0minus(t_printf **bag)
 {
 	int				len;
 	unsigned int	number;
@@ -38,12 +38,12 @@ static void		putunsigned_printf_0minus(t_valores **bag)
 	{
 		diff = (*bag)->width - len;
 		putspaces(diff);
-		(*bag)->len += diff;
+		(*bag)->size += diff;
 	}
 	ft_putnbru(number, bag);
 }
 
-static void		putunsigned_printf_zeros(t_valores **bag)
+static void		putunsigned_printf_zeros(t_printf **bag)
 {
 	unsigned int		number;
 	int					len;
@@ -57,7 +57,7 @@ static void		putunsigned_printf_zeros(t_valores **bag)
 	ft_putnbru(number, bag);
 }
 
-static void		putunsigned_printf_precision(t_valores **bag)
+static void		putunsigned_printf_precision(t_printf **bag)
 {
 	int				len;
 	unsigned int	number;
@@ -70,11 +70,11 @@ static void		putunsigned_printf_precision(t_valores **bag)
 	ft_putnbru(number, bag);
 }
 
-void			putunsigned_printf(t_valores **bag)
+void			putunsigned_printf(t_printf **bag)
 {
-	if ((*bag)->menos == 1)
+	if ((*bag)->minus == 1)
 		putunsigned_printf_1minus(bag);
-	else if ((*bag)->menos == 0)
+	else if ((*bag)->minus == 0)
 	{
 		if ((*bag)->zero == 1)
 			putunsigned_printf_zeros(bag);

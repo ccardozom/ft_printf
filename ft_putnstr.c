@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 08:45:10 by ccardozo          #+#    #+#             */
-/*   Updated: 2020/01/09 08:54:28 by ccardozo         ###   ########.fr       */
+/*   Created: 2019/11/20 14:25:40 by pcuadrad          #+#    #+#             */
+/*   Updated: 2020/02/06 13:23:37 by ccardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		ft_putnstr(t_valores **bag, char *str)
+int		ft_putnstr(t_printf **bag, char *str)
 {
 	int		widthprecision;
 	int		i;
@@ -24,14 +24,14 @@ int		ft_putnstr(t_valores **bag, char *str)
 	if (widthprecision != -1)
 		while (str[++i] && widthprecision > 0)
 		{
-			(*bag)->len++;
+			(*bag)->size++;
 			widthprecision--;
 			ft_putchar(str[i]);
 		}
 	else
 		while (str[++i])
 		{
-			(*bag)->len++;
+			(*bag)->size++;
 			widthprecision--;
 			ft_putchar(str[i]);
 		}

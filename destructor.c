@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   destructor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 12:01:34 by pcuadrad          #+#    #+#             */
-/*   Updated: 2020/02/06 13:23:28 by ccardozo         ###   ########.fr       */
+/*   Created: 2020/02/06 13:21:05 by ccardozo          #+#    #+#             */
+/*   Updated: 2020/02/06 13:21:13 by ccardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_putchar(char c)
+int		destructor(char *format, t_printf **bag)
 {
-	write(1, &c, sizeof(c));
+	int		size;
+
+	(*bag)->summary = ft_strldup(format);
+	size = ft_strlen((*bag)->summary);
+	check_flags(bag);
+	check_width(bag);
+	check_precision(bag);
+	check_conversion(bag);
+	executer(bag);
+	return (size);
 }

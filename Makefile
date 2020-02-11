@@ -1,37 +1,55 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/02/06 13:15:54 by ccardozo          #+#    #+#              #
+#    Updated: 2020/02/06 13:15:54 by ccardozo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#--------------------Recursos---------------------------#
+
+SRCS =	destructor.c initialize.c processline.c ft_printf.c \
+		reinitialize.c check_flags.c check_width.c check_precisition.c \
+		check_conversion.c executer.c putspaces.c ft_putnstr.c putstr_printf.c \
+		ft_isdigit.c ft_putchar.c ft_strchr.c ft_strldup.c ft_strlen.c ft_substr.c \
+		ft_strdup.c ft_strcpy.c putchar_printf.c putpercent_printf.c putzeros.c \
+		putnbr_printf.c ft_nbrlen.c putnbr_printf_aux.c putnbr_printf_aux2.c \
+		putunsigned_printf.c putunsigned_printf_aux.c puthex_printf.c puthex_printf_aux.c \
+		putmemory_printf.c putmemory_printf_aux.c \
+
 NAME = libftprintf.a
 
-CFLAGS = -Wall -Werror -Wextra
+all: ${NAME}
 
-LFLAGS = -c
+COMMAND = ar rc ${NAME} ${OBJS}
 
-FILES = 	eliminar_.c ft_isdigit.c ft_nbr.c ft_printf.c ft_putchar.c ft_putnstr.c ft_strchr.c ft_strldup.c \
-ft_strlen.c ft_substr.c new_ini.c procesar_datos.c procesar_linea.c putchar_printf_.c puthex_printf_au.c puthex_printf.c \
-putmemory_printf_.c putmemory_printf_au.c putnbr_auxiliar_0_printf.c putnbr_base_.c putnbr_check_zero.c putnbr_precision_len.c \
-putnbr_precision.c putnbr_printf_0.c putnbr_printf_menos.c putnbr_printf_menos0.c putnbr_printf_menos1.c putnbr_printf_precision.c \
-putnbr_printf_zeros.c putnbr_printf.c putnbr_verificar_zero.c putnbr_width_cero.c putnbr_width_prec.c putpercent_printf.c putspaces.c putstr_printf.c putunsigned_printf_aux.c \
-putunsigned_printf.c putzeros.c reiniciar_.c verificar_conversion.c verificar_flags.c verificar_precision.c verificar_width.c \
-			
+COMMAND2 = ranlib ${NAME}
 
-OBJ = ${FILES:.c=.o} 
+GCC = gcc -Wall -Werror -Wextra -g
 
-BON = ${BONUS:.c=.o}
+CREATEMKDIR = @mkdir -p objs
 
-all: $(NAME)
+OBJS = ${SRCS:.c=.o}
 
-$(NAME): $(FILES)
-	gcc $(CFLAGS) $(LFLAGS) $(FILES)
-	ar rc $(NAME) $(OBJ)
+RM = rm -rf
 
-#bonus:  $(FILES) $(BON)
-#	gcc $(CFLAGS) $(LFLAGS) $(FILES) $(BONUS)
-#	ar rc $(NAME) $(OBJ) $(BON)
+
+.c.o:
+			${CREATEMKDIR}
+			@${GCC} -c $< -o ${<:.c=.o}
+
+$(NAME):	${OBJS} ${INCLUDE}
+			@${COMMAND}
+			@${COMMAND2}
+
+re:			fclean all
 
 clean:
-	rm -f *.o
+			@${RM} ${OBJS}
 
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
-
-.PHONY: clean fclean all re
+fclean:
+			@${RM} ${NAME} ${CREATEMKDIR}

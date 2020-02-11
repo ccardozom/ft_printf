@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccardozo <ccardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/09 09:01:00 by ccardozo          #+#    #+#             */
-/*   Updated: 2020/01/09 09:01:01 by ccardozo         ###   ########.fr       */
+/*   Created: 2019/11/20 14:12:56 by pcuadrad          #+#    #+#             */
+/*   Updated: 2020/02/06 13:26:34 by ccardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static	int	putstr_printf_nonull_aux(int diff, int lenstr, t_valores **bag)
+static	int	putstr_printf_nonull_aux(int diff, int lenstr, t_printf **bag)
 {
 	if (diff > lenstr)
 		diff += (*bag)->precision;
@@ -21,7 +21,7 @@ static	int	putstr_printf_nonull_aux(int diff, int lenstr, t_valores **bag)
 	return (diff);
 }
 
-static void	putstr_printf_nonull(t_valores **bag, char *str)
+static void	putstr_printf_nonull(t_printf **bag, char *str)
 {
 	int		diff;
 	int		lenstr;
@@ -46,11 +46,11 @@ static void	putstr_printf_nonull(t_valores **bag, char *str)
 			putzeros(diff);
 		else
 			putspaces(diff);
-		(*bag)->len += diff;
+		(*bag)->size += diff;
 	}
 }
 
-static void	putstr_printf_null(t_valores **bag)
+static void	putstr_printf_null(t_printf **bag)
 {
 	int diff;
 
@@ -75,18 +75,18 @@ static void	putstr_printf_null(t_valores **bag)
 			putzeros(diff);
 		else
 			putspaces(diff);
-		(*bag)->len += diff;
+		(*bag)->size += diff;
 	}
 }
 
-void		putstr_printf(t_valores **bag)
+void		putstr_printf(t_printf **bag)
 {
 	int		diff;
 	char	*str;
 
 	diff = 0;
-	str = va_arg((*bag)->ap, char*);
-	if ((*bag)->menos == 1)
+	str = va_arg((*bag)->argv, char*);
+	if ((*bag)->minus == 1)
 	{
 		diff = ft_putnstr(bag, str);
 		if ((*bag)->width > 0)
@@ -94,10 +94,10 @@ void		putstr_printf(t_valores **bag)
 		if (diff >= 0 && (*bag)->width > 0)
 		{
 			putspaces(diff);
-			(*bag)->len += diff;
+			(*bag)->size += diff;
 		}
 	}
-	else if ((*bag)->menos == 0)
+	else if ((*bag)->minus == 0)
 	{
 		if (str)
 			putstr_printf_nonull(bag, str);
